@@ -1,0 +1,66 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+   font-family: 'proxima-nova';
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+*:focus {
+   outline: none;
+}
+
+button {
+   border: none;
+   background: transparent;
+   padding: 0;
+   margin: 0;
+   cursor: pointer;
+   opacity: 1;
+
+   &:focus {
+      outline: none;
+   }
+}
+
+
+.bg-red {
+   background: linear-gradient(to bottom, #d31027, #ea384d);
+}
+
+.bg-white{
+   background: #fff;
+}
+
+.bg-ash {
+   background-color: #f4f6f8;
+}
+
+.cover {
+   position: relative;
+   height: 100vh;
+   &__caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      margin: 0 auto;
+      text-align: center;
+      background-color: rgba(0,0,0,.8);
+   }
+
+   &__logo {
+      fill: #fff;
+      width: 400px;
+      height: 200px;
+      margin-top: 300px;
+   }
+
+   img {
+      width: 100%;
+      box-shadow: 0px 4px 14px -8px rgba(0,0,0,0.20);
+
+   }
+}

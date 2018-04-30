@@ -1,0 +1,49 @@
+$offset-width: 240px;
+
+.slide-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: $offset-width;
+  min-height: 100vh;
+  overflow-y: scroll;
+  z-index: 4;
+  background:#fff;
+  box-shadow: 3px 0px 8px 0px rgba(0,0,0,0.10);
+
+  &.left {
+    left: -$offset-width;
+    transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+.container-fluid {
+  will-change: transform;
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+  will-change: transform;
+  background-color: #fff; /* A background-color is required */
+  min-height: 100vh;
+  transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.drawer-transition {
+  z-index: 2;
+  transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.panel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    //background-color: rgba(0,0,0,.55);
+    z-index: 3;
+    opacity: 1;
+    will-change: opacity;
+}

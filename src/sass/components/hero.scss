@@ -1,0 +1,36 @@
+.hero {
+   background: linear-gradient(to bottom, #42275a, #734b6d);
+   height: 100vh;
+
+   &__logo {
+      fill: #fff;
+      width: 400px;
+   }
+
+   &__caption {
+      font-size: 23px;
+      color: #fff;
+   }
+}
+
+
+.icon {
+
+   &__centra {
+      fill: #fff;
+      width: 120px;
+      height: 50px;
+   }
+
+   &__plus {
+      fill: #fff;
+      width: 30px;
+      height: 50px;
+   }
+
+   &__shopify {
+      fill: #fff;
+      width: 120px;
+      height: 50px;
+   }
+}

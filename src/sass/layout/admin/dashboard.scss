@@ -1,0 +1,46 @@
+$pearl:              #fbfafa !default;
+$ghost:              #f5f5f5 !default;
+$smoke:              #e8e5e5 !default;
+$gray:               #aaa6a6 !default;
+
+.dashboard {
+   padding-top: 60px;
+
+   &__sidebar {
+      border-right: 1px solid $smoke;
+      height: 100vh;
+
+      ul {
+         margin: 0;
+         width: 100%;
+         padding: 0;
+         padding-top: 40px;
+
+
+         li {
+            list-style-type: none;
+            margin: 0;
+            padding-bottom: 25px;
+            width: 100%;
+            display: block;
+
+            a {
+               font-size: 17px;
+               color: darken($gray, 25%);
+               font-weight: 500;
+
+               span {
+                  padding-left: 20px;
+               }
+
+               svg {
+                  fill: darken($gray, 25%);
+                  height: 25px;
+                  width: 25px;
+                  display: inline;
+               }
+            }
+         }
+      }
+   }
+}
