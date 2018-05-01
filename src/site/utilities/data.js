@@ -23,11 +23,6 @@ export default {
         icon: 'webhook'
       },
       {
-        name: 'Billing',
-        url: '/billing',
-        icon: 'billing'
-      },
-      {
         name: 'Settings',
         url: '/settings',
         icon: 'settings'

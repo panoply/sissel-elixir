@@ -17,7 +17,7 @@ import Login from 'public/login';
 
 /* Admin Views */
 import Dashboard from 'admin/dashboard';
-import Clients from 'admin/clients';
+import Stock from 'admin/stock';
 
 const root = document.getElementById('app');
 
@@ -57,14 +57,9 @@ m.route(root, '/', {
       return m(Admin, m(Dashboard));
     }
   },
-  '/dashboard/clients': {
+  '/stock': {
     render(){
-      return m(Admin, m(Clients));
-    }
-  },
-  '/dashboard/clients/:id': {
-    render(){
-      return m(Admin, m(Clients));
+      return m(Stock, m(Dashboard));
     }
   }
 });

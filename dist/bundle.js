@@ -1387,7 +1387,7 @@ var Navbar$1 = {
   }
 };
 
-var Data = {
+var data = {
   public: {
     hero_caption: 'Sissel enables uninterrupted stock synchronization between Swedish wholesale VMS system Centra and eCommerce platform Shopify.'
   },
@@ -1412,11 +1412,6 @@ var Data = {
         icon: 'webhook'
       },
       {
-        name: 'Billing',
-        url: '/billing',
-        icon: 'billing'
-      },
-      {
         name: 'Settings',
         url: '/settings',
         icon: 'settings'
@@ -1437,7 +1432,7 @@ var Admin = {
         mithril('.row.no-gutter', [
           mithril('.col-2.dashboard__sidebar.bg-ash', [
             mithril('ul', [
-              Data.admin.menu.map(function (item) {
+              data.admin.menu.map(function (item) {
                 return [
                   mithril('li', [
                     mithril('a[href="'+item.url+'"]', [
@@ -1465,7 +1460,7 @@ var Home = {
       mithril('a.d-block[href="/"]', { oncreate: mithril.route.link }, [
         mithril('svg.hero__logo', mithril('use[xlink:href="icons.svg#logo"]'))
       ]),
-      mithril('.hero__caption.d-block', Data.public.hero_caption),
+      mithril('.hero__caption.d-block', data.public.hero_caption),
       mithril('.row.justify-content-center.pt-4.no-gutters', [
         mithril('.col-auto', [
           mithril('svg.icon__centra', mithril('use[xlink:href="icons.svg#centra"]'))
@@ -1579,7 +1574,7 @@ var Dashboard = {
     return [
       mithril('.row', [
         mithril('.col-12', [
-          mithril('.d-block', Data.admin.dashboard.greeting),
+          mithril('.d-block', data.admin.dashboard.greeting),
           Api.data.map(function (item) {
             return [
               mithril('a[href="/dashboard/clients/'+item.id+'"]', {
@@ -1593,32 +1588,12 @@ var Dashboard = {
   },
 };
 
-/* Modules */
-var Clients = {
-  oninit: function oninit(){
-    Api.get({
-      endpoint: 'users',
-      query: {
-        company: mithril.route.param('id')
-      }
-    });
-  },
-  view: function view() {
-    return [
-      mithril('.d-block', [
-        mithril('h1', 'Clients'),
-        Api.data.map(function (item) {
-          return [
-            mithril('.d-block', item.attributes['first-name'] + item.attributes['last-name']),
-            mithril('.d-block', item.attributes['email'])
-          ];
-        })
-      ])
-    ];
-  },
-};
-
 /* Stylesheet */
+/* Modules */
+/* Utilities */
+/* Layout */
+/* Public Views */
+/* Admin Views */
 var root = document.getElementById('app');
 
 /* Public Router */
@@ -1653,6 +1628,11 @@ mithril.route(root, '/', {
     }
   },
   '/dashboard': {
+    render: function render(){
+      return mithril(Admin, mithril(Dashboard));
+    }
+  },
+  '/stock': {
     render: function render(){
       return mithril(Admin, mithril(Dashboard));
     }

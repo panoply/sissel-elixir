@@ -1,9 +1,9 @@
 /* Modules */
 import m from 'mithril';
 
-/* Helpers */
+/* Utilities */
 import api from 'utilities/api';
-import Data from 'utilities/data';
+import data from 'utilities/data';
 
 export default {
   oninit(){
@@ -15,7 +15,7 @@ export default {
     return [
       m('.row', [
         m('.col-12', [
-          m('.d-block', Data.admin.dashboard.greeting),
+          m('.d-block', data.admin.dashboard.greeting),
           api.data.map((item) => {
             return [
               m('a[href="/dashboard/clients/'+item.id+'"]', {
