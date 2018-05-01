@@ -1,11 +1,11 @@
 /* Modules */
 import m from 'mithril';
 
-/* Layout */
-import Navbar from 'admin/components/navbar';
-
 /* Utilities */
-import Data from 'utilities/data';
+import data from 'utilities/data';
+
+/* Layout */
+import Navbar from 'navbar';
 
 export default {
   oninit(){
@@ -18,7 +18,7 @@ export default {
         m('.row.no-gutter', [
           m('.col-2.dashboard__sidebar.bg-ash', [
             m('ul', [
-              Data.admin.menu.map((item) => {
+              data.admin.menu.map((item) => {
                 return [
                   m('li', [
                     m('a[href="'+item.url+'"]', [

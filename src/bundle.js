@@ -7,18 +7,17 @@ import m from 'mithril';
 /* Utilities */
 import state from 'utilities/state';
 
-/* Layout */
-import Hero from 'layout/hero';
-import Admin from 'layout/admin';
-
-/* Public Views */
+/* Public */
+import Hero from 'public/components/hero';
 import Home from 'public/home';
 import Login from 'public/login';
 
-/* Admin Views */
+/* Admin */
+import Admin from 'admin/components/layout';
 import Dashboard from 'admin/dashboard';
 import Stock from 'admin/stock';
 
+/* Mounted Element */
 const root = document.getElementById('app');
 
 /* Public Router */

@@ -5,7 +5,7 @@ import m from 'mithril';
 import state from 'utilities/state';
 
 /* Layout */
-import Navbar from 'components/navbar';
+import Navbar from 'navbar';
 
 export default {
   view(v){
