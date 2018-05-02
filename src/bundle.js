@@ -8,12 +8,12 @@ import m from 'mithril';
 import state from 'utilities/state';
 
 /* Public */
-import Hero from 'public/components/hero';
+import Hero from 'public/components/hero'; // Layout
 import Home from 'public/home';
 import Login from 'public/login';
 
 /* Admin */
-import Admin from 'admin/components/layout';
+import Admin from 'admin/components/layout'; // Layout
 import Dashboard from 'admin/dashboard';
 import Stock from 'admin/stock';
 

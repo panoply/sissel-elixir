@@ -5,7 +5,7 @@ import m from 'mithril';
 import data from 'utilities/data';
 
 /* Layout */
-import Navbar from 'navbar';
+import Navbar from 'admin/components/navbar';
 
 export default {
   oninit(){

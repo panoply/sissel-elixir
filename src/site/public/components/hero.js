@@ -3,6 +3,7 @@ import m from 'mithril';
 
 /* Helpers */
 import state from 'utilities/state';
+import data from 'utilities/data';
 
 /* Layout */
 import Navbar from 'navbar';
@@ -17,10 +18,13 @@ export default {
       },[
         m('nav', [
           m('ul.Menu', [
-            m('li', m('a[href="/"]', { oncreate: m.route.link }, 'Home')),
-            m('li', m('a[href="/about"]',{ oncreate: m.route.link }, 'About')),
-            m('li', m('a[href="/clients"]', 'Clients')),
-            m('li', m('a[href="/contact"]', 'Contact')),
+            data.public.menu.map((item) => {
+              return [
+                m('li', [
+                  m('a[href="'+item.url+'"]', { oncreate: m.route.link }, item.name)
+                ])
+              ];
+            })
           ])
         ])
       ]),

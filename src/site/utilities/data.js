@@ -1,5 +1,15 @@
 export default {
   public: {
+    menu: [
+      {
+        name: 'Home',
+        url: '/'
+      },
+      {
+        name: 'About',
+        url: '/about'
+      }
+    ],
     hero_caption: 'Sissel enables uninterrupted stock synchronization between Swedish wholesale VMS system Centra and eCommerce platform Shopify.'
   },
   admin: {

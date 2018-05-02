@@ -55,6 +55,12 @@ defmodule Api.Accounts do
     end
   end
 
+  def user_from_token(token) do
+    {:ok, user, _claims} = Guardian.resource_from_token(token)
+
+    {:ok, user}
+  end
+
   defp email_password_auth(email, password) when is_binary(email) and is_binary(password) do
     with {:ok, user} <- get_by_email(email),
     do: verify_password(password, user)

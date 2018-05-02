@@ -1,18 +1,17 @@
 defmodule Api.Centra do
   use Tesla
 
-  plug Tesla.Middleware.DecodeJson
+  @behaviour Api.Client
+
+  def init(api_key, domain) do
+    Tesla.build_client([
+      {Tesla.Middleware.BaseUrl, domain},
+      {Tesla.Middleware.Headers, [{"API-Authorization", api_key}]}
+    ])
+  end
 
   def get_stock(client) do
     get(client, "/stock")
-  end
-
-  # build dynamic client based on runtime arguments
-  def client(domain, key) do
-    Tesla.build_client [
-      { Tesla.Middleware.BaseUrl, domain },
-      { Tesla.Middleware.Headers, [{"API-Authorization", key }] }
-    ]
   end
 
 end

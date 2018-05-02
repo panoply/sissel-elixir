@@ -1284,7 +1284,51 @@ var state = {
   }
 };
 
+var data = {
+  public: {
+    menu: [
+      {
+        name: 'Home',
+        url: '/'
+      },
+      {
+        name: 'About',
+        url: '/about'
+      }
+    ],
+    hero_caption: 'Sissel enables uninterrupted stock synchronization between Swedish wholesale VMS system Centra and eCommerce platform Shopify.'
+  },
+  admin: {
+    dashboard: {
+      greeting: 'Here’s the latest information regarding your stock synchronization'
+    },
+    menu: [
+      {
+        name: 'Dashboard',
+        url: '/dashboard',
+        icon: 'dashboard'
+      },
+      {
+        name: 'Stock',
+        url: '/stock',
+        icon: 'stock'
+      },
+      {
+        name: 'Webhooks',
+        url: '/webhooks',
+        icon: 'webhook'
+      },
+      {
+        name: 'Settings',
+        url: '/settings',
+        icon: 'settings'
+      }
+    ]
+  }
+};
+
 /* Modules */
+/* Helpers */
 var Navbar = {
   view: function view(){
     return [
@@ -1325,6 +1369,8 @@ var Navbar = {
 };
 
 /* Modules */
+/* Helpers */
+/* Layout */
 var Hero = {
   view: function view(v){
     return [
@@ -1335,10 +1381,14 @@ var Hero = {
       },[
         mithril('nav', [
           mithril('ul.Menu', [
-            mithril('li', mithril('a[href="/"]', { oncreate: mithril.route.link }, 'Home')),
-            mithril('li', mithril('a[href="/about"]',{ oncreate: mithril.route.link }, 'About')),
-            mithril('li', mithril('a[href="/clients"]', 'Clients')),
-            mithril('li', mithril('a[href="/contact"]', 'Contact')) ])
+            data.public.menu.map(function (item) {
+              return [
+                mithril('li', [
+                  mithril('a[href="'+item.url+'"]', { oncreate: mithril.route.link }, item.name)
+                ])
+              ];
+            })
+          ])
         ])
       ]),
       mithril(Navbar),
@@ -1365,95 +1415,7 @@ var Hero = {
 };
 
 /* Modules */
-var Navbar$1 = {
-  view: function view(){
-    return [
-      mithril('.admin-navbar', [
-        mithril('.row', [
-          mithril('.col-6.align-self-center', [
-            mithril('button[type="button"]',[
-              mithril('svg.admin-navbar__logo', mithril('use[xlink:href="icons.svg#logo"]'))
-            ]) ]),
-          mithril('.col-6.text-right.align-self-center', [
-            mithril('a[href="/logout"]', {
-              oncreate: mithril.route.link
-            },[
-              mithril('svg.admin-navbar__login', mithril('use[xlink:href="icons.svg#login"]'))
-            ])
-          ])
-        ])
-      ])
-    ];
-  }
-};
-
-var data = {
-  public: {
-    hero_caption: 'Sissel enables uninterrupted stock synchronization between Swedish wholesale VMS system Centra and eCommerce platform Shopify.'
-  },
-  admin: {
-    dashboard: {
-      greeting: 'Here’s the latest information regarding your stock synchronization'
-    },
-    menu: [
-      {
-        name: 'Dashboard',
-        url: '/dashboard',
-        icon: 'dashboard'
-      },
-      {
-        name: 'Stock',
-        url: '/stock',
-        icon: 'stock'
-      },
-      {
-        name: 'Webhooks',
-        url: '/webhooks',
-        icon: 'webhook'
-      },
-      {
-        name: 'Settings',
-        url: '/settings',
-        icon: 'settings'
-      }
-    ]
-  }
-};
-
-/* Modules */
-var Admin = {
-  oninit: function oninit(){
-    mithril.route.set('/secret');
-  },
-  view: function view(v){
-    return [
-      mithril(Navbar$1),
-      mithril('.dashboard', [
-        mithril('.row.no-gutter', [
-          mithril('.col-2.dashboard__sidebar.bg-ash', [
-            mithril('ul', [
-              data.admin.menu.map(function (item) {
-                return [
-                  mithril('li', [
-                    mithril('a[href="'+item.url+'"]', [
-                      mithril('svg.icon', mithril('use[xlink:href="icons.svg#'+item.icon+'"]')),
-                      mithril('span', item.name)
-                    ])
-                  ])
-                ];
-              })
-            ])
-          ]),
-          mithril('.col-10.dashboard__content', [
-            mithril('.block.p-5', v.children)
-          ])
-        ])
-      ])
-    ];
-  }
-};
-
-/* Modules */
+/* Utilities */
 var Home = {
   view: function view() {
     return [
@@ -1510,6 +1472,7 @@ var Auth = {
 };
 
 /* Modules */
+/* Utilities */
 var Login = {
   oninit: function oninit() {
     mithril.route.set('/secret');
@@ -1546,6 +1509,64 @@ var Login = {
 };
 
 /* Modules */
+var Navbar$1 = {
+  view: function view(){
+    return [
+      mithril('.admin-navbar', [
+        mithril('.row', [
+          mithril('.col-6.align-self-center', [
+            mithril('button[type="button"]',[
+              mithril('svg.admin-navbar__logo', mithril('use[xlink:href="icons.svg#logo"]'))
+            ]) ]),
+          mithril('.col-6.text-right.align-self-center', [
+            mithril('a[href="/logout"]', {
+              oncreate: mithril.route.link
+            },[
+              mithril('svg.admin-navbar__login', mithril('use[xlink:href="icons.svg#login"]'))
+            ])
+          ])
+        ])
+      ])
+    ];
+  }
+};
+
+/* Modules */
+/* Utilities */
+/* Layout */
+var Admin = {
+  oninit: function oninit(){
+    mithril.route.set('/secret');
+  },
+  view: function view(v){
+    return [
+      mithril(Navbar$1),
+      mithril('.dashboard', [
+        mithril('.row.no-gutter', [
+          mithril('.col-2.dashboard__sidebar.bg-ash', [
+            mithril('ul', [
+              data.admin.menu.map(function (item) {
+                return [
+                  mithril('li', [
+                    mithril('a[href="'+item.url+'"]', [
+                      mithril('svg.icon', mithril('use[xlink:href="icons.svg#'+item.icon+'"]')),
+                      mithril('span', item.name)
+                    ])
+                  ])
+                ];
+              })
+            ])
+          ]),
+          mithril('.col-10.dashboard__content', [
+            mithril('.block.p-5', v.children)
+          ])
+        ])
+      ])
+    ];
+  }
+};
+
+/* Modules */
 var Api = {
   data: [],
   get: function get(model) {
@@ -1564,7 +1585,34 @@ var Api = {
 };
 
 /* Modules */
+/* Utilities */
 var Dashboard = {
+  oninit: function oninit(){
+    Api.get({
+      endpoint: 'clients'
+    });
+  },
+  view: function view() {
+    return [
+      mithril('.row', [
+        mithril('.col-12', [
+          mithril('.d-block', data.admin.dashboard.greeting),
+          Api.data.map(function (item) {
+            return [
+              mithril('a[href="/dashboard/clients/'+item.id+'"]', {
+                oncreate: mithril.route.link
+              }, item.company)
+            ];
+          })
+        ])
+      ])
+    ];
+  },
+};
+
+/* Modules */
+/* Utilities */
+var Stock = {
   oninit: function oninit(){
     Api.get({
       endpoint: 'clients'
@@ -1591,9 +1639,9 @@ var Dashboard = {
 /* Stylesheet */
 /* Modules */
 /* Utilities */
-/* Layout */
-/* Public Views */
-/* Admin Views */
+/* Public */
+/* Admin */
+/* Mounted Element */
 var root = document.getElementById('app');
 
 /* Public Router */
@@ -1634,17 +1682,7 @@ mithril.route(root, '/', {
   },
   '/stock': {
     render: function render(){
-      return mithril(Admin, mithril(Dashboard));
-    }
-  },
-  '/dashboard/clients': {
-    render: function render(){
-      return mithril(Admin, mithril(Clients));
-    }
-  },
-  '/dashboard/clients/:id': {
-    render: function render(){
-      return mithril(Admin, mithril(Clients));
+      return mithril(Stock, mithril(Dashboard));
     }
   }
 });
