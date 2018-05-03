@@ -8,3 +8,4 @@ import './layout/admin/dashboard.scss';
 
 import './components/hero.scss';
 import './components/drawer.scss';
+import './components/tabs.scss';

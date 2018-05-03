@@ -1328,7 +1328,6 @@ var data = {
 };
 
 /* Modules */
-/* Helpers */
 var Navbar = {
   view: function view(){
     return [
@@ -1369,8 +1368,6 @@ var Navbar = {
 };
 
 /* Modules */
-/* Helpers */
-/* Layout */
 var Hero = {
   view: function view(v){
     return [
@@ -1415,7 +1412,6 @@ var Hero = {
 };
 
 /* Modules */
-/* Utilities */
 var Home = {
   view: function view() {
     return [
@@ -1472,7 +1468,6 @@ var Auth = {
 };
 
 /* Modules */
-/* Utilities */
 var Login = {
   oninit: function oninit() {
     mithril.route.set('/secret');
@@ -1532,8 +1527,6 @@ var Navbar$1 = {
 };
 
 /* Modules */
-/* Utilities */
-/* Layout */
 var Admin = {
   oninit: function oninit(){
     mithril.route.set('/secret');
@@ -1548,7 +1541,7 @@ var Admin = {
               data.admin.menu.map(function (item) {
                 return [
                   mithril('li', [
-                    mithril('a[href="'+item.url+'"]', [
+                    mithril('a[href="'+item.url+'"]', { oncreate: mithril.route.link }, [
                       mithril('svg.icon', mithril('use[xlink:href="icons.svg#'+item.icon+'"]')),
                       mithril('span', item.name)
                     ])
@@ -1585,7 +1578,6 @@ var Api = {
 };
 
 /* Modules */
-/* Utilities */
 var Dashboard = {
   oninit: function oninit(){
     Api.get({
@@ -1611,25 +1603,33 @@ var Dashboard = {
 };
 
 /* Modules */
-/* Utilities */
 var Stock = {
   oninit: function oninit(){
     Api.get({
-      endpoint: 'clients'
+      endpoint: 'stock'
     });
   },
   view: function view() {
     return [
       mithril('.row', [
         mithril('.col-12', [
-          mithril('.d-block', data.admin.dashboard.greeting),
-          Api.data.map(function (item) {
-            return [
-              mithril('a[href="/dashboard/clients/'+item.id+'"]', {
-                oncreate: mithril.route.link
-              }, item.company)
-            ];
-          })
+          mithril('ul.tabs', [
+            mithril('li', 'Sync'),
+            mithril('li', 'Shopify'),
+            mithril('li', 'Centra') ]),
+          mithril('.tabs__content', [
+            Api.data.map(function (item) {
+              return [
+                mithril('.row', [
+                  mithril('.col-3', item.product),
+                  mithril('.col-2', item.variant),
+                  mithril('.col-1', item.size),
+                  mithril('.col-2', item.ean),
+                  mithril('.col-4', item.collection)
+                ])
+              ];
+            })
+          ])
         ])
       ])
     ];
@@ -1671,7 +1671,7 @@ mithril.route(root, '/', {
         mithril.route.set('/login');
       } else {
         state.authentication = true;
-        mithril.route.set('/dashboard');
+        mithril.route.set('/stock');
       }
     }
   },
@@ -1682,7 +1682,17 @@ mithril.route(root, '/', {
   },
   '/stock': {
     render: function render(){
-      return mithril(Stock, mithril(Dashboard));
+      return mithril(Admin, mithril(Stock));
+    }
+  },
+  '/stock/:shopify': {
+    render: function render(){
+      return mithril(Admin, mithril(Stock));
+    }
+  },
+  '/stock/:centra': {
+    render: function render(){
+      return mithril(Admin, mithril(Stock));
     }
   }
 });

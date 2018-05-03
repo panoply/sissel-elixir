@@ -21,7 +21,7 @@ export default {
               data.admin.menu.map((item) => {
                 return [
                   m('li', [
-                    m('a[href="'+item.url+'"]', [
+                    m('a[href="'+item.url+'"]', { oncreate: m.route.link }, [
                       m('svg.icon', m('use[xlink:href="icons.svg#'+item.icon+'"]')),
                       m('span', item.name)
                     ])

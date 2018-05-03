@@ -1,0 +1,30 @@
+$smoke:              #e8e5e5 !default;
+
+
+.tabs {
+   border-bottom: 1px solid $smoke;
+   width: 100%;
+   padding: 0;
+   margin: 0;
+
+   li {
+      list-style-type: none;
+      display: inline-block;
+      border-top: 1px solid $smoke;
+      border-left: 1px solid $smoke;
+      padding: 5px 30px;
+
+      &:first-child {
+         border-top-left-radius: 3px;
+      }
+
+      &:last-child {
+         border-right: 1px solid $smoke;
+         border-top-right-radius: 3px;
+      }
+   }
+
+   &__content {
+      display: block;
+   }
+}

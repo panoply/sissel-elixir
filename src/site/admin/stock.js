@@ -3,26 +3,35 @@ import m from 'mithril';
 
 /* Utilities */
 import api from 'utilities/api';
-import data from 'utilities/data';
 
 export default {
   oninit(){
     api.get({
-      endpoint: 'clients'
+      endpoint: 'stock'
     });
   },
   view() {
     return [
       m('.row', [
         m('.col-12', [
-          m('.d-block', data.admin.dashboard.greeting),
-          api.data.map((item) => {
-            return [
-              m('a[href="/dashboard/clients/'+item.id+'"]', {
-                oncreate: m.route.link
-              }, item.company)
-            ];
-          })
+          m('ul.tabs', [
+            m('li', 'Sync'),
+            m('li', 'Shopify'),
+            m('li', 'Centra'),
+          ]),
+          m('.tabs__content', [
+            api.data.map((item) => {
+              return [
+                m('.row', [
+                  m('.col-3', item.product),
+                  m('.col-2', item.variant),
+                  m('.col-1', item.size),
+                  m('.col-2', item.ean),
+                  m('.col-4', item.collection)
+                ])
+              ];
+            })
+          ])
         ])
       ])
     ];

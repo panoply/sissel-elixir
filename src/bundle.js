@@ -47,7 +47,7 @@ m.route(root, '/', {
         m.route.set('/login');
       } else {
         state.authentication = true;
-        m.route.set('/dashboard');
+        m.route.set('/stock');
       }
     }
   },
@@ -58,7 +58,17 @@ m.route(root, '/', {
   },
   '/stock': {
     render(){
-      return m(Stock, m(Dashboard));
+      return m(Admin, m(Stock));
+    }
+  },
+  '/stock/:shopify': {
+    render(){
+      return m(Admin, m(Stock));
+    }
+  },
+  '/stock/:centra': {
+    render(){
+      return m(Admin, m(Stock));
     }
   }
 });
