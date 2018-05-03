@@ -45,7 +45,7 @@ defmodule Api.Mixfile do
       {:cors_plug, "~> 1.5"},
       {:tesla, "1.0.0-beta.1"},
       {:jason, ">= 1.0.0"},
-      {:hackney, "~> 1.10"}
+      {:shopify, "~> 0.1.7"}
     ]
   end
 

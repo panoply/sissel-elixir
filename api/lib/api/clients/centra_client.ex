@@ -1,7 +1,7 @@
 defmodule Api.Centra do
   use Tesla
 
-  @behaviour Api.Client
+  plug Tesla.Middleware.JSON
 
   def init(api_key, domain) do
     Tesla.build_client([

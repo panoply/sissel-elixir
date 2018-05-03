@@ -20,6 +20,7 @@ defmodule ApiWeb.Router do
   scope "/api/v1", ApiWeb do
     pipe_through [:api, :jwt_authenticated]
     get "/stock", StockController, :centra
+    get "/shopify", StockController, :shopify
     resources "/clients", ClientController
 
   #  resources "/clients", ClientController
